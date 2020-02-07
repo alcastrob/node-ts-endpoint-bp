@@ -2,15 +2,31 @@
   // Use IntelliSense para saber los atributos posibles.
   // Mantenga el puntero para ver las descripciones de los existentes atributos.
   // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
-  "type": "node",
-  "request": "launch",
-  "name": "Jasmine Current File",
-  "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine",
-  "args": [
-    "${workspaceFolder}/TSOutput/tests/${fileBasenameNoExtension}.js"
-  ],
-  "preLaunchTask": "tsc: compilación - tsconfig.json",
-  "outFiles": ["${workspaceFolder}/TSOutput/**/*.js"],
-  "console": "integratedTerminal",
-  "internalConsoleOptions": "neverOpen"
+  "configurations": [{
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/dist/index.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/TSOutput/**/*.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Jasmine Tests",
+      "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine",
+      "args": [
+        "${workspaceFolder}/TSOutput/tests/${fileBasenameNoExtension}.js"
+      ],
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/TSOutput/**/*.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
 }
