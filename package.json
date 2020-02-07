@@ -1,0 +1,39 @@
+{
+  "name": "usable-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "tsc": "tsc",
+    "build": "npm-run-all clean lint tsc",
+    "dev:start": "npm-run-all build start",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node .",
+    "test": "ts-node node_modules/jasmine/bin/jasmine --config=./jasmine.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.2",
+    "@types/fs-extra": "^8.0.1",
+    "@types/jasmine": "^3.5.3",
+    "@types/node": "^13.7.0",
+    "fs-extra": "^8.1.0",
+    "jasmine": "^3.5.0",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^15.0.0",
+    "rimraf": "^3.0.1",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5"
+  }
+}
