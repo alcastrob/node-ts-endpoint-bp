@@ -1,18 +1,20 @@
 import dotenv from 'dotenv'
 import express from 'express'
-import dummy from './Application/misc'
+import 'reflect-metadata'
+import container from '../inversify.config'
+import MiscClass from './Application/misc'
 
 // initialize configuration
-dotenv.config();
+dotenv.config()
 
 // port is now available to the Node.js runtime
 // as if it were an environment variable
-const port = process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT
 
 const app = express()
 app.use(express.json())
 
-const dummyApp = new dummy()
+const dummyApp: MiscClass = container.resolve<MiscClass>(MiscClass)
 
 // define a route handler for the default home page
 app.get('/', (request, response) => {
